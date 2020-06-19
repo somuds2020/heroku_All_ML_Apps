@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu Cluster Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_cluster.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/Cust_Spend_Data.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Retail Cluster Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_cluster')}}"method="post">
+	<div>
+	<span class="inlineinput">
+    	<input type="text" name="Cust_ID" placeholder="Cust ID" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Name" placeholder="Cust Name" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Avg_Mthly_Spend" placeholder="Avg Mthly Spend" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="No_Of_Visits" placeholder="No Of Visits" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Apparel_Items" placeholder="Apparel Items" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="FnV_Items" placeholder="FnV Items" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Staples_Items" placeholder="Staples Items" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+
+     <!-- Routing to home page -->
+    <form action="{{ url_for('home')}}">
+
+	<p align="center">
+        <button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+     </form>
+ 	
+<pre>
+<h2>           Inputs</h2>
+Cust ID : Unique ID for Customers 
+          (Example : 5)
+
+Name : Name of Customer
+       (Example : Somu)
+
+Avg Mthly Spend : Average Monthly spend per Month
+	           (Example : 7000)
+
+No Of Visits : Number of Visits per Month
+	        (Example : 7)
+
+Apparel Items : Number of Apparel Items purchased per Month
+	         (Example : 10)
+
+FnV Items : Number of FnV Items purchased per Month
+	     (Example : 0)
+      
+Staples Items : Number of Staples Items purchased per Month
+	         (Example : 0)
+</pre>
+
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+     <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

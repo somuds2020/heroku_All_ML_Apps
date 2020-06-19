@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu ML Applications</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_home.css') }}">
+  
+</head>
+
+<body>
+
+ <div class="header">
+  <h1>Machine Learning Applications</h1>
+  <p>Please select an application</p></p>
+ </div>
+
+ <div class="login">
+
+     <!-- Routing to diabetes prediction application -->
+    <form action="{{ url_for('diabetes')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_diabetes" style="width: 200px; height: 50px;">Diabetes Prediction</button>
+	</p>
+     </form>
+     
+          <!-- Routing to HR Attrition prediction application -->
+    <form action="{{ url_for('attrition')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_attrition" style="width: 200px; height: 50px;">HR Attrition Prediction</button>
+	</p>
+     </form>
+     
+    <form action="{{ url_for('loan')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_loan" style="width: 200px; height: 50px;">Loan Approval Prediction</button>
+	</p>
+     </form>
+     
+    <form action="{{ url_for('house')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_house" style="width: 200px; height: 50px;">House Price Prediction</button>
+	</p>
+     </form>
+     
+     <form action="{{ url_for('sentiment')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_sentiment" style="width: 200px; height: 50px;">Sentiment Prediction</button>
+	</p>
+     </form>
+     
+     <form action="{{ url_for('cluster')}}"method="post">
+
+	<p align="center">
+        <button type="submit" class="button_cluster" style="width: 200px; height: 50px;">Cluster Prediction</button>
+	</p>
+     </form>
+     
+      <a href="https://github.com/somuds2020/heroku_All_ML_Apps" target="_blank" class="github_link">Github Code Link</a>
+     
+ </div>
+ 
+     <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

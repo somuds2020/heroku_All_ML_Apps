@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu Attrition Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_attrition.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/HR_Employee_Attrition_Data.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Employee Attrition Portal</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_attrition')}}"method="post">
+	<div>
+	<span class="inlineinput">
+    	<input type="text" name="Age" placeholder="Age" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<!-- <input type="text" name="BusinessTravel" placeholder="Business Travel" required="required"  style='display: inline; width: 200px;'/>
+	-->
+	<input type="text" name="BusinessTravel" list="BusinessTravel" placeholder="Business Travel" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="BusinessTravel">
+		<option value = "Non-Travel"/>
+		<option value = "Travel_Frequently"/>
+		<option value = "Travel_Rarely"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="DailyRate" placeholder="Daily Rate" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Department" list="Department" placeholder="Department" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Department">
+		<option value = "Human Resources"/>
+		<option value = "Research & Development"/>
+		<option value = "Sales"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="DistanceFromHome" placeholder="Distance From Home" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Education" list="Education" placeholder="Education" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Education">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+		<option value = "5"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="EducationField" list="EducationField" placeholder="Education Field" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="EducationField">
+		<option value = "Human Resources"/>
+		<option value = "Life Sciences"/>
+		<option value = "Marketing"/>
+		<option value = "Medical"/>
+		<option value = "Other"/>
+		<option value = "Technical Degree"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="EmployeeCount" placeholder="Employee Count" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="EmployeeNumber" placeholder="Employee Number" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="EnvironmentSatisfaction" list="EnvironmentSatisfaction" placeholder="Environment Satisfaction" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="EnvironmentSatisfaction">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Gender" list="Gender" placeholder="Gender" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Gender">
+		<option value = "Male"/>
+		<option value = "Female"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="HourlyRate" placeholder="Hourly Rate" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="JobInvolvement" list="JobInvolvement" placeholder="Job Involvement" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="JobInvolvement">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="JobLevel" list="JobLevel" placeholder="Job Level" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="JobLevel">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+		<option value = "5"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="JobRole" list="JobRole" placeholder="Job Role" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="JobRole">
+		<option value = "Healthcare Representative"/>
+		<option value = "Human Resources"/>
+		<option value = "Laboratory Technician"/>
+		<option value = "Manager"/>
+		<option value = "Manufacturing Director"/>
+		<option value = "Research Director"/>
+		<option value = "Research Scientist"/>
+		<option value = "Sales Executive"/>
+		<option value = "Sales Representative"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="JobSatisfaction" list="JobSatisfaction" placeholder="Job Satisfaction" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="JobSatisfaction">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="MaritalStatus" list="MaritalStatus" placeholder="Marital Status" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="MaritalStatus">
+		<option value = "Single"/>
+		<option value = "Married"/>
+		<option value = "Divorced"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="MonthlyIncome" placeholder="Monthly Income" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="MonthlyRate" placeholder="Monthly Rate" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="NumCompaniesWorked" placeholder="Num Companies Worked" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Over18" list="Over18" placeholder="Over18" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Over18">
+		<option value = "Y"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="OverTime" list="OverTime" placeholder="Over Time" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="OverTime">
+		<option value = "Yes"/>
+		<option value = "No"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="PercentSalaryHike" placeholder="Percent Salary Hike" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="PerformanceRating" list="PerformanceRating" placeholder="Performance Rating" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="PerformanceRating">
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="RelationshipSatisfaction" list="RelationshipSatisfaction" placeholder="Relationship Satisfaction" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="RelationshipSatisfaction">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="StandardHours" list="StandardHours" placeholder="Standard Hours" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="StandardHours">
+		<option value = "80"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="StockOptionLevel" list="StockOptionLevel" placeholder="Stock Option Level" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="StockOptionLevel">
+		<option value = "0"/>
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="TotalWorkingYears" placeholder="Total Working Years" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="TrainingTimesLastYear" placeholder="Training Times Last Year" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="WorkLifeBalance" list="WorkLifeBalance" placeholder="Work Life Balance" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="WorkLifeBalance">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="YearsAtCompany" placeholder="Years At Company" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="YearsInCurrentRole" placeholder="Years In Current Role" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="YearsSinceLastPromotion" placeholder="Years Since Last Promotion" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="YearsWithCurrManager" placeholder="Years With CurrManager" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+	
+	
+	<!-- Routing to input description page -->
+	<form action="{{ url_for('attrition_info')}}"method="post">
+	<button type="submit" class="button1" style="width: 150px; height: 35px;">Input Description</button>
+	</form>
+	
+	<!-- Routing to home page -->
+	<form action="{{ url_for('home')}}">
+
+	<p align="center">
+		<button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+	</form>
+	
+   {{ prediction_text }}
+
+ </div>
+
+      <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

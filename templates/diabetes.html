@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu Diabetes Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_diabetes.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/diabetes.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Predict Diabetes</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_diabetes')}}"method="post">
+	<div>
+	<span class="inlineinput">
+    	<input type="text" name="Pregnancies" placeholder="Pregnancies" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Glucose" placeholder="Glucose" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="BloodPressure" placeholder="Blood Pressure" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="SkinThickness" placeholder="Skin Thickness" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Insulin" placeholder="Insulin" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="BMI" placeholder="BMI" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Age" placeholder="Age" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+
+     <!-- Routing to home page -->
+    <form action="{{ url_for('home')}}">
+
+	<p align="center">
+        <button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+     </form>
+ 	
+<pre>
+<h2>           Inputs</h2>
+Pregnancies : Number of times pregnant 
+              (Example : 2)
+
+Glucose : Plasma glucose concentration a 2 hours
+          in an oral glucose tolerance test
+	   (Example : 106)
+
+BloodPressure : Diastolic blood pressure (mm Hg)
+		  (Example : 64)
+
+SkinThickness : Triceps skin fold thickness (mm)
+		  (Example : 35)
+
+Insulin : 2-Hour serum insulin (mu U/ml)
+	   (Example : 119)
+
+BMI : Body mass index (weight in kg/(height in m)^2)
+      (Example : 30.5)
+      
+DiabetesPedigreeFunction : Diabetes pedigree function
+			      (Example : 1.4)
+
+Age : Age (years)
+      (Example : 34)
+</pre>
+
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+     <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

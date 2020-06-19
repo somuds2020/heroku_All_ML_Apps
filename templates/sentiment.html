@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu Sentiment Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_sentiment.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/Sentiment.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Sentiment Prediction Application</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_sentiment')}}"method="post">
+	<div>
+	<span class="inlineinput">
+	<textarea rows="15" cols="60" name="usrtxt" placeholder="Please Tweet here...." wrap="hard"></textarea>
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+
+     <!-- Routing to home page -->
+    <form action="{{ url_for('home')}}">
+
+	<p align="center">
+        <button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+     </form>
+
+   {{ prediction_text }}
+
+ </div>
+
+     <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

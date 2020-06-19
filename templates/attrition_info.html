@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu Attrition Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_attrition.css') }}">
+  
+</head>
+
+<body>
+ 	
+<table style="width:96%">
+  <tr>
+    <th>Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><b>Age</b></td>
+    <td><b>age of employee (continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Business Travel</b></td>
+    <td><b>Describe official travelling of employees (categorical variable
+having 3 Labels Non-Travel, Travel_Frequently, Travel_Rarely)</b></td>
+  </tr>
+  <tr>
+    <td><b>Daily Rate</b></td>
+    <td><b>Daily rate of employee (continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Department</b></td>
+    <td><b>Department of employee (categorical variable having 3 labels -
+Human Resources, Research & Development, Sales)</b></td>
+  </tr>
+  <tr>
+    <td><b>Distance From Home</b></td>
+    <td><b>distance of office from home in km (continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Education</b></td>
+    <td><b>Education of employee in rating (categorical variables ,ordinal
+data, 5 Ratings 1, 2, 3, 4, 5)</b></td>
+  </tr>
+  <tr>
+    <td><b>Education Field</b></td>
+    <td><b>Education Stream of employee (categorical variable having 6
+labels-Human Resources, Life Sciences, Marketing, Medical,
+Other, Technical Degree)</b></td>
+  </tr>
+  <tr>
+    <td><b>Employee Count</b></td>
+    <td><b>Count of employee (Continuous variable and only 1 value present
+like a Constant)</b></td>
+  </tr>
+  <tr>
+    <td><b>Employee Number</b></td>
+    <td><b>Employee identification number an ID variable</b></td>
+  </tr>
+  <tr>
+    <td><b>Environment Satisfaction</b></td>
+    <td><b>Job Environment Stratification of employee (rating scale data 1,
+2, 3, 4 categorical variable nominal/ordinal data)</b></td>
+  </tr>
+  <tr>
+    <td><b>Gender</b></td>
+    <td><b>Describe gender of employee Categorical variable (2 labels
+Female, Male)</b></td>
+  </tr>
+  <tr>
+    <td><b>Hourly Rate</b></td>
+    <td><b>describe hourly rate of employee (Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Job Involvement</b></td>
+    <td><b>Engagement in the jog (Rating data having 4 ratings 1,2,3,4
+categorical variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Job Level</b></td>
+    <td><b>Level of job in organization structure (Rating data having 5
+ratings 1, 2,3,4,5 categorical variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Job Role</b></td>
+    <td><b>Healthcare Representative,Human Resources,Laboratory
+Technician,Manager,Manufacturing Director,Research
+Director,Research Scientist,Sales Executive,Sales Representative</b></td>
+  </tr>
+  <tr>
+    <td><b>Job Satisfaction</b></td>
+    <td><b>Stratification of employee within job (rating scale data 1, 2, 3, 4
+categorical variable nominal/ordinal data)</b></td>
+  </tr>
+  <tr>
+    <td><b>Marital Status</b></td>
+    <td><b>Marital Status(Categorical Variable having 3 labels -
+Divorced,Married,Single)</b></td>
+  </tr>
+  <tr>
+    <td><b>Monthly Income</b></td>
+    <td><b>monthly income of employee(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Monthly Rate</b></td>
+    <td><b>Monthly rate of employee(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Num Companies Worked</b></td>
+    <td><b>Number of company employee worked for(Count data having
+0,1,2,3,4,5,6,7,8,9, continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Over18</b></td>
+    <td><b>Status of adult employee(categorical variable having 1 category -
+Y)</b></td>
+  </tr>
+  <tr>
+    <td><b>Over Time</b></td>
+    <td><b>OverTime status(categorical variable having 2 category - Yes,
+No)</b></td>
+  </tr>
+  <tr>
+    <td><b>Percent Salary Hike</b></td>
+    <td><b>Salary hike %age (continuous variable Percentage figures)</b></td>
+  </tr>
+  <tr>
+    <td><b>Performance Rating</b></td>
+    <td><b>Performance rating (Rating data ,Categorical nominal/ordinal
+data- 3,4)</b></td>
+  </tr>
+  <tr>
+    <td><b>Relationship Satisfaction</b></td>
+    <td><b>Shows status of Relationship with Managers(Rating data 4
+labels ,Categorical nominal/ordinal data-1,23,4)</b></td>
+  </tr>
+  <tr>
+    <td><b>Standard Hours</b></td>
+    <td><b>Standard working hours (Numerical data , 80 hours for
+everybody, almost constant data)</b></td>
+  </tr>
+  <tr>
+    <td><b>Stock Option Level</b></td>
+    <td><b>stock option(Rating data 4 labels ,Categorical nominal/ordinal
+data-1,23,4)</b></td>
+  </tr>
+  <tr>
+    <td><b>Total Working Years</b></td>
+    <td><b>Total year of experience(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Training Times Last Year</b></td>
+    <td><b>Training Time(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Work Life Balance</b></td>
+    <td><b>WorkLifeBalance : rating 1,2,3,4</b></td>
+  </tr>
+  <tr>
+    <td><b>Years At Company</b></td>
+    <td><b>Years in current company(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Years In Current Role</b></td>
+    <td><b>Years in current Role(Continuous variable)</b></td>
+  </tr>
+  <tr>
+    <td><b>Years Since Last Promotion</b></td>
+    <td><b>Years Since last Promotion(Continuous variable)</b></td>
+  </tr>  
+  <tr>
+    <td><b>Years With CurrManager</b></td>
+    <td><b>Years in current Managerial role(Continuous variable)</b></td>
+  </tr>
+</table>
+
+	<form action="{{ url_for('attrition')}}"method="post">
+		<button type="submit" class="button2" style="width: 200px; height: 35px;">Back to Attrition Portal</button>
+	</form>
+
+</body>
+</html>

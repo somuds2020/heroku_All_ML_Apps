@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu loan Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_loan.css') }}">
+  
+</head>
+
+<body>
+ 	
+<table style="width:96%">
+  <tr>
+    <th>Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><b>Customer ID</b></td>
+    <td><b>Unique ID (cant be used for predictions)</b></td>
+  </tr>
+  <tr>
+    <td><b>Gender</b></td>
+    <td><b>Sex of the applicant</b></td>
+  </tr>
+  <tr>
+    <td><b>DOB</b></td>
+    <td><b>Date of Birth of the applicant</b></td>
+  </tr>
+  <tr>
+    <td><b>Lead Creation Date</b></td>
+    <td><b>Date on which Lead was created</b></td>
+  </tr>
+  <tr>
+    <td><b>City Code</b></td>
+    <td><b>Anonymised Code for the City</b></td>
+  </tr>
+  <tr>
+    <td><b>City Category</b></td>
+    <td><b>Anonymised City Feature</b></td>
+  </tr>
+  <tr>
+    <td><b>Employer Code</b></td>
+    <td><b>Anonymised Code for the Employer</b></td>
+  </tr>
+  <tr>
+    <td><b>Employer_Category1</b></td>
+    <td><b>Anonymised Employer Feature</b></td>
+  </tr>
+  <tr>
+    <td><b>Employer_Category2</b></td>
+    <td><b>Anonymised Employer Feature</b></td>
+  </tr>
+  <tr>
+    <td><b>Monthly Income</b></td>
+    <td><b>Monthly Income in Dollars</b></td>
+  </tr>
+  <tr>
+    <td><b>Customer Bank Code</b></td>
+    <td><b>Anonymised Customer Bank Code</b></td>
+  </tr>
+  <tr>
+    <td><b>Primary Bank Type</b></td>
+    <td><b>Anonymised Bank Feature</b></td>
+  </tr>
+  <tr>
+    <td><b>Contacted</b></td>
+    <td><b>Contact Verified (Y/N)</b></td>
+  </tr>
+  <tr>
+    <td><b>Source</b></td>
+    <td><b>Categorical Variable representing source of lead</b></td>
+  </tr>
+  <tr>
+    <td><b>Source Category</b></td>
+    <td><b>Type of Source</b></td>
+  </tr>
+  <tr>
+    <td><b>Existing EMI</b></td>
+    <td><b>EMI of Existing Loans in Dollars</b></td>
+  </tr>
+  <tr>
+    <td><b>Loan Amount</b></td>
+    <td><b>Loan Amount Requested</b></td>
+  </tr>
+  <tr>
+    <td><b>Loan Period</b></td>
+    <td><b>Loan Period (Years)</b></td>
+  </tr>
+  <tr>
+    <td><b>Interest Rate</b></td>
+    <td><b>Interest Rate of Submitted Loan Amount</b></td>
+  </tr>
+  <tr>
+    <td><b>EMI</b></td>
+    <td><b>EMI of Requested Loan Amount in dollars</b></td>
+  </tr>
+  <tr>
+    <td><b>Var1</b></td>
+    <td><b>Categorical variable with multiple levels</b></td>
+  </tr>
+</table>
+
+	<form action="{{ url_for('loan')}}"method="post">
+		<button type="submit" class="button2" style="width: 200px; height: 35px;">Back to Loan Portal</button>
+	</form>
+
+</body>
+</html>

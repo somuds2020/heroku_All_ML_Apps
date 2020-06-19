@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu loan Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_loan.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/train_loan.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Loan Approval Portal</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_loan')}}"method="post">
+	<div>
+	<span class="inlineinput">
+    	<input type="text" name="CustomerID" placeholder="Customer ID" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Gender" list="Gender" placeholder="Gender" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Gender">
+		<option value = "Male"/>
+		<option value = "Female"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="DateofBirth" placeholder="Date of Birth" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="Lead_Creation_Date" placeholder="Lead Creation Date" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="City_Code" placeholder="City Code" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="City_Category" list="City_Category" placeholder="City Category" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="City_Category">
+		<option value = "A"/>
+		<option value = "B"/>
+		<option value = "C"/>
+	</datalist>
+	<span class="inlineinput">
+    	<input type="text" name="Employer_Code" placeholder="Employer Code" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Employer_Category1" list="Employer_Category1" placeholder="Employer Category1" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Employer_Category1">
+		<option value = "A"/>
+		<option value = "B"/>
+		<option value = "C"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Employer_Category2" list="Employer_Category2" placeholder="Employer Category2" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Employer_Category2">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Monthly_Income" placeholder="Monthly Income" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Customer_Existing_Primary_Bank_Code" placeholder="Customer Bank Code" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Primary_Bank_Type" list="Primary_Bank_Type" placeholder="Primary Bank Type" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Primary_Bank_Type">
+		<option value = "P"/>
+		<option value = "G"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Contacted" list="Contacted" placeholder="Customer Contacted" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Contacted">
+		<option value = "Y"/>
+		<option value = "N"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Source" placeholder="Source" style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Source_Category" list="Source_Category" placeholder="Source Category" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Source_Category">
+		<option value = "A"/>
+		<option value = "B"/>
+		<option value = "C"/>
+		<option value = "D"/>
+		<option value = "E"/>
+		<option value = "F"/>
+		<option value = "G"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Existing_EMI" placeholder="Existing EMI" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Loan_Amount" placeholder="Loan Amount" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Loan_Period" list="Loan_Period" placeholder="Loan Period" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Loan_Period">
+		<option value = "1"/>
+		<option value = "2"/>
+		<option value = "3"/>
+		<option value = "4"/>
+		<option value = "5"/>
+		<option value = "6"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Interest_Rate" placeholder="Interest Rate" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="EMI" placeholder="EMI" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+    	<input type="text" name="Var1" list="Var1" placeholder="Var1" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="Var1">
+		<option value = "0"/>
+		<option value = "2"/>
+		<option value = "4"/>
+		<option value = "7"/>
+		<option value = "10"/>
+	</datalist>
+	
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+	
+	
+	<!-- Routing to input description page -->
+	<form action="{{ url_for('loan_info')}}"method="post">
+	<button type="submit" class="button1" style="width: 150px; height: 35px;">Input Description</button>
+	</form>
+	
+	<!-- Routing to home page -->
+	<form action="{{ url_for('home')}}">
+
+	<p align="center">
+		<button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+	</form>
+	
+   {{ prediction_text }}
+
+ </div>
+
+      <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>

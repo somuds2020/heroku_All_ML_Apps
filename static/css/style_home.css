@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
+
+html { width: 100%; height:100%; overflow:hidden; }
+
+body { 
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+	background: #FCE4EC; /* This is background color */
+	color: #345feb; /* This is prediction text color */
+	font-size: 18px;
+	text-align:center;
+	letter-spacing:1.2px;
+	/*
+	background colors
+	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
+	*/
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+
+}
+.login { 
+	/* This is form adjustment block */
+	position: absolute;
+	top: 52.5%;
+	left: 18%;
+	margin: -150px 0 0 -150px;
+	width:1200px;
+	height:400px;
+}
+
+.login h1 { color: #eb4034 /* This is Heading text color */; /* text-shadow: 0 0 10px rgba(0,0,0,0.3);*/ letter-spacing:1px; text-align:center; }
+
+.button_diabetes {
+  /* Input Description Button */
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.button_attrition {
+  /* Input Description Button */
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.button_loan {
+  /* Input Description Button */
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.button_house {
+  /* Input Description Button */
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.button_sentiment {
+  /* Input Description Button */
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.button_cluster {
+  /* Input Description Button */
+  position: absolute;
+  top: 45%;
+  left: 60%;
+  background-color: #E53935;
+  color: white;
+  font-size: 18px;
+  border: 2px solid #4CAF50; /* Green */
+}
+
+.header {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background: #E53935;
+  color: white;
+  font-size: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  left: 0%;
+  text-align: center;
+  padding: 3px;
+  background-color: #E53935;
+  color: white;
+  height: 5.5rem;            /* Footer height */
+}
+
+img {
+  position: absolute;
+  top: 0%;
+  left: 28%;
+}
+
+.github_link{
+  position: absolute;
+  top: 80%;
+  left: 41%;
+  font-size: 18px;
+  color: #E53935;
+}

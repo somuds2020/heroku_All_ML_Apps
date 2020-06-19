@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Somu House Price Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_house.css') }}">
+  
+</head>
+
+<body>
+
+<a href="https://github.com/somuds2020/heroku_All_ML_Apps/blob/master/Data/Maison.csv" target="_blank" class="data">Sample Input CSV</a>
+
+ <div class="login">
+	<h1>Predict House Price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_house')}}"method="post">
+	<div>
+	<span class="inlineinput">
+    	<input type="text" name="area" placeholder="Area" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="rooms" placeholder="Rooms" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="bathroom" placeholder="Bathroom" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="floors" placeholder="Floors" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="driveway" list="driveway" placeholder="Driveway" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="driveway">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="game_room" list="game_room" placeholder="Game Room" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="game_room">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="cellar" list="cellar" placeholder="Cellar" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="cellar">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="gas" list="gas" placeholder="Gas" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="gas">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="air" list="air" placeholder="Air" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="air">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="garage" placeholder="Garage" required="required"  style='display: inline; width: 200px;'/>
+	</span>
+	<span class="inlineinput">
+	<input type="text" name="situation" list="situation" placeholder="Situation" required="required"  style='display: inline; width: 200px;'/>
+	
+	<datalist id="situation">
+		<option value = "1"/>
+		<option value = "0"/>
+	</datalist>
+	
+	</span>
+	</div>
+	<p align="center">
+        <button type="submit" class="btn btn-primary btn-block btn-large" style="width: 150px; height: 35px;">Predict</button>
+	</p>
+	</form>
+
+     <!-- Routing to home page -->
+    <form action="{{ url_for('home')}}">
+
+	<p align="center">
+        <button type="submit" class="button_home" style="width: 150px; height: 35px;">Home</button>
+	</p>
+     </form>
+ 	
+<pre>
+<h2>           Inputs</h2>
+Area : Area of House 
+       (Example : 5850)
+
+Rooms : Number of Rooms (1,2,3,4,5,6)
+	 (Example : 3)
+
+Bathroom : Number of Bathrooms (1,2,3,4)
+	    (Example : 1)
+
+Floors : Number of Floors (1,2,3,4)
+	  (Example : 2)
+
+Driveway : Driveway Available (1 : Yes, 0 : No)
+	    (Example : 1)
+
+Game Room : Game Room Available (1 : Yes, 0 : No)
+            (Example : 0)
+      
+Cellar : Cellar/Basement Available (1 : Yes, 0 : No)
+	  (Example : 1)
+
+Gas : Gas connection Available (1 : Yes, 0 : No)
+      (Example : 0)
+      
+Air : Air connection Available (1 : Yes, 0 : No)
+      (Example : 0)
+       
+Garage : Number of Garages (0,1,2,3)
+	  (Example : 1)
+	  
+Situation : Situation (1 : Yes, 0 : No)
+	     (Example : 0)
+</pre>
+
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+     <footer>
+        <img src="\static\images\Capture.PNG" alt="HTML5 Icon" width="110" height="100">
+	<p>Author: Somendra Singh Sengar<br>
+	<a href="mailto:somuds2020@gmail.com">somuds2020@gmail.com</a></p>
+     </footer>
+
+</body>
+</html>
